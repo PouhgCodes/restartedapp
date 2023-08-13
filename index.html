@@ -40,7 +40,7 @@
     <main id="camera">
         <canvas id="camera--sensor"></canvas>
         <video id="leftView" autoplay playsinline></video>
-        
+        <video id="rightView" autoplay playsinline></video>
     </main>
     <script>
         // Set constraints for the video stream
@@ -65,6 +65,14 @@
 
     // Start the video stream when the window loads 
     window.addEventListener("load", cameraStart, false);
+
+    const cameraViews = document.querySelectorAll("#camera--view");
+
+    for (var i = 0; i < cameraViews.length; i++) {
+      cameraViews[i].addEventListener("load", function() {
+        cameraViews[i].play();
+      });
+    }
 
 </script>
 </body>
