@@ -1,0 +1,72 @@
+<!DocType HTML> 
+<!Doctype html>
+<html lang="en">
+    <head> 
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no ">
+        <title>InvertApp</title>
+        <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+          }
+          #camera--view {
+            filter: invert(100%);
+        }
+          
+          #camera, #left--View, #right--View {
+            position: fixed;
+            height: 50%;
+            width: 100%;
+            object-fit: cover;
+          }
+
+          #left--View {
+            left: 0;
+          }
+
+          #right--View {
+            right: 0;
+          }
+          
+    
+          
+        </style>
+    </head>
+<body>
+    <main id="camera">
+        <canvas id="camera--sensor"></canvas>
+        <video id="camera--view" autoplay playsinline></video>
+        <video id="leftView" autoplay playsinline></video>
+        <video id="rightView" autoplay playsinline></video>
+    </main>
+    <script>
+        // Set constraints for the video stream
+    var constraints = { video: true, audio: false, facingMode: "environment" };
+
+    // Define constants
+    const cameraView = document.querySelector("#camera--view");
+    const leftView = document.querySelector("#camera--View").cloneNode(true);
+    const rightView = document.querySelector("#camera--View").cloneNode(true);
+
+    // Access the device camera and stream to cameraView
+    function cameraStart() {
+    navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then(function(stream) {
+      cameraView.srcObject = stream;
+    })
+    .catch(function(error) {
+      console.error("Oops. Something is broken.", error);
+    });
+    }
+
+    // Start the video stream when the window loads 
+    window.addEventListener("load", cameraStart, false);
+
+</script>
+</body>
+</html>
