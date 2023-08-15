@@ -21,4 +21,4 @@ console.error("Oops. Something is broken.", error);
 // Start the video stream when the window loads 
 window.addEventListener("load", cameraStart, true);
     
-const cameraViews = document.querySelectorAll("#camera--view");
+const cameraViews = document.querySelectorAll("#left--View");
