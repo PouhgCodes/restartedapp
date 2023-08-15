@@ -8,7 +8,7 @@ html, body {
     filter: invert(100%);
 }
   
-  #camera, #left--View {
+  #camera, #left--View, right--View {
     position: fixed;
     height: 50%;
     width: 100%;
@@ -16,5 +16,9 @@ html, body {
   }
 
   #left--View {
+    left: 0;
+  }
+
+  #right--View {
     left: 0;
   }
