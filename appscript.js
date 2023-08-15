@@ -1,5 +1,5 @@
 // Set constraints for the video stream
-var constraints = { video: true, audio: false, facingMode: "user" };
+var constraints = { video: true, audio: false, facingMode: "environment" };
 
 // Define constants
 const cameraView = document.querySelector("#camera--view");
@@ -12,6 +12,8 @@ navigator.mediaDevices
 .getUserMedia(constraints)
 .then(function(stream) {
 cameraView.srcObject = stream;
+leftView.srcObject = stream;
+rightView.srcObject = stream;
 })
 .catch(function(error) {
 console.error("Oops. Something is broken.", error);
@@ -21,4 +23,4 @@ console.error("Oops. Something is broken.", error);
 // Start the video stream when the window loads 
 window.addEventListener("load", cameraStart, true);
     
-const cameraViews = document.querySelectorAll("#left--View");
+const cameraViews = document.querySelectorAll("#camera--view");
